@@ -8,3 +8,18 @@ jobs:
     container:
       image: python:3.10
 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          pip install flake8
+          pip install nose
+
+      - name: Lint with Flake8
+        run: flake8 .
+
+      - name: Run unit tests
+        run: nosetests
+
